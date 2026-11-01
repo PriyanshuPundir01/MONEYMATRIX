@@ -12,7 +12,7 @@
 
 [![C Version](https://img.shields.io/badge/Language-C99%20%2F%20C11-00ff99?style=for-the-badge&logo=c&logoColor=0a0c10)](https://en.wikipedia.org/wiki/C_(programming_language))
 [![Data Structure](https://img.shields.io/badge/Index-Binary_Search_Tree-00d4ff?style=for-the-badge&logo=tree&logoColor=0a0c10)](https://en.wikipedia.org/wiki/Binary_search_tree)
-[![Security](https://img.shields.io/badge/Security-Salted_DJB2_Hash-ff007f?style=for-the-badge&logo=target&logoColor=ffffff)](https://en.wikipedia.org/wiki/Cryptographic_hash_function)
+[![Security](https://img.shields.io/badge/Security-Salted_SHA256_Hash-ff007f?style=for-the-badge&logo=target&logoColor=ffffff)](https://en.wikipedia.org/wiki/SHA-2)
 [![Platform](https://img.shields.io/badge/Platform-Windows_Console-0078D6?style=for-the-badge&logo=windows&logoColor=ffffff)](https://microsoft.com)
 [![Storage](https://img.shields.io/badge/Storage-Persistent_Flat--File-ffb703?style=for-the-badge&logo=database&logoColor=0a0c10)](#06-data-schemas)
 [![License: MIT](https://img.shields.io/badge/License-MIT-a78bfa?style=for-the-badge&logo=open-source-initiative&logoColor=0a0c10)](LICENSE)
@@ -142,19 +142,12 @@ typedef struct BSTNode {
 
 ---
 
-### 🔐 2. Salted Cryptographic Password Hashing
-Credentials are never stored in plain text. Input characters are salted with `banking_system_salt` and processed via a customized **DJB2 hash** algorithm:
+### 🔐 2. Salted Cryptographic Password Hashing (SHA-256)
+Credentials are never stored in plain text. Input characters are salted with a secret cryptographic key (configured via `MONEYMATRIX_SECRET_KEY` in `.env` or system environment variables) and digested via NIST FIPS 180-4 standard **SHA-256**:
 
-$$\text{Digest} = \text{DJB2}(\text{Plaintext Password} \mathbin{\Vert} \text{HASH\_SALT})$$
+$$\text{Digest} = \text{SHA256}(\text{Plaintext Password} \mathbin{\Vert} \text{SECRET\_KEY})$$
 
-```c
-unsigned long hashString(const char *str) {
-    unsigned long hash = 5381;
-    int c;
-    while ((c = *str++)) hash = ((hash << 5) + hash) + c; // hash * 33 + c
-    return hash;
-}
-```
+Authentication uses **constant-time comparisons** (`constantTimeCompare`) to resist timing side-channel attacks, and automatic backward-compatible legacy hash upgrades.
 
 ---
 
@@ -277,10 +270,14 @@ cl MONEYMATRIX.c /Fe:MONEYMATRIX.exe
 
 <h2 id="08-operational-workflows" style="font-family: 'Bookman Old Style', 'URW Bookman', 'Georgia', serif; color: #00ff99;">🎮 08. Operational Workflows</h2>
 
-### 🔑 Default Administrative Credentials
-| Role | Username | Password | Privileges |
+### 🔑 Administrative Credentials & Environment Variables
+| Role | Default Username | Default Password | Environment Variable Override |
 | :--- | :---: | :---: | :--- |
-| **System Admin** | `admin` | `admin123` | Global Account Audit, Soft Deletes, Password Reset |
+| **System Admin** | `admin` | `admin123` | `MONEYMATRIX_ADMIN_USER`, `MONEYMATRIX_ADMIN_PASS` |
+| **Secret Salt** | — | `banking_system_salt` | `MONEYMATRIX_SECRET_KEY` |
+
+> [!TIP]
+> Override default administrative credentials and cryptographic secret salts in production by creating a `.env` file (see `.env.example`). Both user and administrative login interfaces are protected by automated rate-limiting (3 failed attempts trigger security lockouts).
 
 ### 👤 Customer Operations Flow
 1. **Enrollment**: Select `1` from Main Menu & complete KYC verification. Note your generated 10-digit Account Number.

@@ -1,0 +1,26 @@
+# Environment & Secret Variables
+.env
+.env.*
+!.env.example
+
+# Compiled Binaries & Object Files
+*.exe
+*.o
+*.obj
+*.dll
+*.so
+*.dylib
+
+# Temporary Database & Atomic Swap Files
+*.tmp
+*.bak
+
+# Logs & Debugging
+*.log
+
+# Editor & OS Files
+.vscode/
+.idea/
+Thumbs.db
+[Dd]esktop.ini
+
