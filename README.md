@@ -271,13 +271,13 @@ cl MONEYMATRIX.c /Fe:MONEYMATRIX.exe
 <h2 id="08-operational-workflows" style="font-family: 'Bookman Old Style', 'URW Bookman', 'Georgia', serif; color: #00ff99;">🎮 08. Operational Workflows</h2>
 
 ### 🔑 Administrative Credentials & Environment Variables
-| Role | Default Username | Default Password | Environment Variable Override |
-| :--- | :---: | :---: | :--- |
-| **System Admin** | `admin` | `admin123` | `MONEYMATRIX_ADMIN_USER`, `MONEYMATRIX_ADMIN_PASS` |
-| **Secret Salt** | — | `banking_system_salt` | `MONEYMATRIX_SECRET_KEY` |
+| Role | Configuration Variable | Default Username | Password Storage |
+| :--- | :--- | :---: | :--- |
+| **System Admin** | `MONEYMATRIX_ADMIN_USER`, `MONEYMATRIX_ADMIN_PASS` | `admin` | Configured in private `.env` (Zero Hardcoded Passwords) |
+| **Secret Salt** | `MONEYMATRIX_SECRET_KEY` | — | Configured in private `.env` |
 
-> [!TIP]
-> Override default administrative credentials and cryptographic secret salts in production by creating a `.env` file (see `.env.example`). Both user and administrative login interfaces are protected by automated rate-limiting (3 failed attempts trigger security lockouts).
+> [!IMPORTANT]
+> **Zero Hardcoded Secrets**: MoneyMatrix does not store administrative passwords in plaintext source code. Administrative credentials are read dynamically from your local, private `.env` configuration file (see [`.env.example`](.env.example)). Both customer and administrative login gateways are protected by automated rate-limiting (3 failed attempts trigger security lockouts).
 
 ### 👤 Customer Operations Flow
 1. **Enrollment**: Select `1` from Main Menu & complete KYC verification. Note your generated 10-digit Account Number.

@@ -23,8 +23,7 @@
 #define ENV_FILE ".env"
 
 #define DEFAULT_ADMIN_USER "admin"
-#define DEFAULT_ADMIN_PASS "admin123"
-#define DEFAULT_HASH_SALT "banking_system_salt"
+#define DEFAULT_HASH_SALT "moneymatrix_default_salt"
 
 #define MAX_LOGIN_ATTEMPTS 3
 #define LOCKOUT_PENALTY_SEC 3
@@ -224,7 +223,7 @@ static const char* getAdminUsername() {
 
 static const char* getAdminPassword() {
     const char *env_pass = getenv("MONEYMATRIX_ADMIN_PASS");
-    return (env_pass && strlen(env_pass) > 0) ? env_pass : DEFAULT_ADMIN_PASS;
+    return (env_pass && strlen(env_pass) > 0) ? env_pass : NULL;
 }
 
 static const char* getSecretSalt() {
@@ -1364,6 +1363,14 @@ void adminLogin() {
 
     const char *expected_user = getAdminUsername();
     const char *expected_pass = getAdminPassword();
+
+    if (expected_pass == NULL) {
+        setcolor(COLOR_RED);
+        printf("\nSecurity Warning: Admin password is not configured.\n");
+        printf("Please set MONEYMATRIX_ADMIN_PASS in your private .env file.\n");
+        setcolor(COLOR_DEFAULT);
+        return;
+    }
 
     bool user_match = constantTimeCompare(username_input, expected_user);
     bool pass_match = constantTimeCompare(password_input, expected_pass);
