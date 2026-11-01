@@ -11,6 +11,10 @@
 *.so
 *.dylib
 
+# Database & Ledger Files (Contains Sensitive PII and Financial Data)
+accounts.txt
+transactions.txt
+
 # Temporary Database & Atomic Swap Files
 *.tmp
 *.bak
