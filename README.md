@@ -58,7 +58,7 @@
 
 ### ◈ 1. Stylized Main Menu HUD
 <kbd>
-  <img src="screen%20shot/UI%20ss.png" alt="MoneyMatrix Main Menu Terminal" width="90%" style="border-radius: 8px; border: 2px solid #00ff99; box-shadow: 0 0 30px rgba(0, 255, 153, 0.25);" />
+  <img src="screenshots/UI%20ss.png" alt="MoneyMatrix Main Menu Terminal" width="90%" style="border-radius: 8px; border: 2px solid #00ff99; box-shadow: 0 0 30px rgba(0, 255, 153, 0.25);" />
 </kbd>
 <br/>
 <sub style="font-family: 'Bookman Old Style', 'URW Bookman', serif;"><b>◈ Figure 1.0:</b> Central access gateway featuring dynamic text centering, Win32 ANSI palette styling, and dual portal routing.</sub>
@@ -67,7 +67,7 @@
 
 ### ◈ 2. Customer KYC & Account Enrollment
 <kbd>
-  <img src="screen%20shot/Account%20creation%20ss.png" alt="Account Creation HUD" width="90%" style="border-radius: 8px; border: 2px solid #00d4ff; box-shadow: 0 0 30px rgba(0, 212, 255, 0.25);" />
+  <img src="screenshots/Account%20creation%20ss.png" alt="Account Creation HUD" width="90%" style="border-radius: 8px; border: 2px solid #00d4ff; box-shadow: 0 0 30px rgba(0, 212, 255, 0.25);" />
 </kbd>
 <br/>
 <sub style="font-family: 'Bookman Old Style', 'URW Bookman', serif;"><b>◈ Figure 1.1:</b> Real-time KYC validation interface enforcing strict 12-digit Aadhaar, 10-digit mobile, and masked password inputs.</sub>
@@ -76,7 +76,7 @@
 
 ### ◈ 3. User Banking & Transaction Terminal
 <kbd>
-  <img src="screen%20shot/User%20dashboard%20ss.png" alt="User Banking Dashboard" width="90%" style="border-radius: 8px; border: 2px solid #00ff99; box-shadow: 0 0 30px rgba(0, 255, 153, 0.25);" />
+  <img src="screenshots/User%20dashboard%20ss.png" alt="User Banking Dashboard" width="90%" style="border-radius: 8px; border: 2px solid #00ff99; box-shadow: 0 0 30px rgba(0, 255, 153, 0.25);" />
 </kbd>
 <br/>
 <sub style="font-family: 'Bookman Old Style', 'URW Bookman', serif;"><b>◈ Figure 1.2:</b> Active account terminal showing real-time balance metrics, atomic cash deposits, withdrawals, and P2P transfers.</sub>
@@ -85,7 +85,7 @@
 
 ### ◈ 4. Administrative Command Center
 <kbd>
-  <img src="screen%20shot/Dashboard%20ss.png" alt="Admin Management Dashboard" width="90%" style="border-radius: 8px; border: 2px solid #ff007f; box-shadow: 0 0 30px rgba(255, 0, 127, 0.25);" />
+  <img src="screenshots/Dashboard%20ss.png" alt="Admin Management Dashboard" width="90%" style="border-radius: 8px; border: 2px solid #ff007f; box-shadow: 0 0 30px rgba(255, 0, 127, 0.25);" />
 </kbd>
 <br/>
 <sub style="font-family: 'Bookman Old Style', 'URW Bookman', serif;"><b>◈ Figure 1.3:</b> Privileged administrative oversight dashboard displaying global account directories, soft deletion, and security overrides.</sub>
